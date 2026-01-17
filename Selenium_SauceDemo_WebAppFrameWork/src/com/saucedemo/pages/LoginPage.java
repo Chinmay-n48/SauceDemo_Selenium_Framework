@@ -6,17 +6,17 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage {
 	WebDriver driver;
 
-    By username = By.id("user-name");
-    By password = By.id("password");
-    By loginBtn = By.id("login-button");
+    By UserNameField = By.id("user-name");
+    By PasswordField = By.id("password");
+    By LoginBtn = By.id("login-button");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
     
     public void login(String user, String pass) {
-        driver.findElement(username).sendKeys(user);
-        driver.findElement(password).sendKeys(pass);
-        driver.findElement(loginBtn).click();
+        driver.findElement(UserNameField).sendKeys(user);
+        driver.findElement(PasswordField).sendKeys(pass);
+        driver.findElement(LoginBtn).click();
     }
 }
