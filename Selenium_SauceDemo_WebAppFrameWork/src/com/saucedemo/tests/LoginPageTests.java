@@ -75,21 +75,21 @@ public class LoginPageTests extends BaseTest {
 	}
 	@Test
 	//Blank Password
-	public void Tc_LoginPage_008() {
+	public void TC_LoginPage_008() {
 		login.login("standard_user", "");
 		Assert.assertEquals(login.getLoginErrorMessagedisplayed(), true, "Error Message not displayed");
 		Assert.assertEquals(login.getLoginErrorMessage(), "Epic sadface: Password is required", "Error message is not matched");		
 	}
 	@Test
 	//Locked Out User
-	public void Tc_LoginPage_009() {
+	public void TC_LoginPage_009() {
 		login.login("locked_out_user", "secret_sauce");
 		Assert.assertEquals(login.getLoginErrorMessagedisplayed(), true, "Error Message not displayed");
 		Assert.assertEquals(login.getLoginErrorMessage(), "Epic sadface: Sorry, this user has been locked out.","Error message is not matched");
 	}
 	@Test
 	//Problem User Login
-	public void Tc_LoginPage_010() {
+	public void TC_LoginPage_010() {
 		login.login("problem_user", "secret_sauce");
 		Assert.assertTrue(driver.getCurrentUrl().contains("inventory"), "Login failed for problem user");
 		WebElement imageElement=driver.findElement(By.xpath("//img[@alt='Sauce Labs Backpack']"));
@@ -97,14 +97,46 @@ public class LoginPageTests extends BaseTest {
 	}
 	@Test
 	//Performance Glitch User
-	public void Tc_LoginPage_011() {
+	public void TC_LoginPage_011() {
 		long startTime  = System.nanoTime();
 		login.login("performance_glitch_user", "secret_sauce");
 		long endTime = System.nanoTime();
 	    long durationNano = endTime - startTime;
 	    long durationMillis = durationNano / 1_000_000;
-	    Assert.assertTrue(durationMillis>5000,"Chinmay");;
+	    Assert.assertTrue(durationMillis>5000,"Login in the lessa than 5 sec ");;
 		Assert.assertTrue(driver.getCurrentUrl().contains("inventory"), "Login failed for problem user");				
+	}
+	@Test
+	//Verify UI Elements
+	public void TC_Login_012() {
+		Assert.assertTrue(login.getLoginPageTitledisplayed(), "Login Page title not displayed");
+		Assert.assertEquals(login.getLoginPageTitleText(), "Swag Labs", "Login page title not matched");
+		
+		Assert.assertTrue(login.getUserNameFieldDisplayed(),"User name field is not displayed");
+		Assert.assertTrue(login.getUserNameFieldEnabled(),"User name field is not enabled");
+		Assert.assertEquals(login.getUserNameFieldPlaceholder(), "Username", "Placeholder is not matched");
+		
+		Assert.assertTrue(login.getPassWordFieldDisplayed(),"User name field is not displayed");
+		Assert.assertTrue(login.getUserPassWordFieldEnabled(),"User name field is not enabled");
+		Assert.assertEquals(login.getPassWordFieldPlaceholder(), "Password", "Placeholder is not matched");
+		
+		Assert.assertTrue(login.getLoginButtonClickable(), "Login button is not enabled");
+		Assert.assertEquals(login.getLoginBtnText(), "Login", "Login button text is not matched");
+		
+	}
+	@Test
+	//Password Masking
+	public void TC_Login_013() {
+		driver.findElement(login.PasswordField).sendKeys("secret_sauce");
+		Assert.assertEquals(login.getPasswordFieldMasking(), "password", "Password not Masking");
+	}
+	@Test
+	//Close Error Message
+	public void TC_Login_014() {
+		login.login("standarduser", "secretsauce");
+		Assert.assertTrue(login.getLoginErrorMessagedisplayed(), "Error Message not displayed");
+		driver.findElement(login.ErrorMessageCloseBtn).click();
+		
 	}
 	
 }
