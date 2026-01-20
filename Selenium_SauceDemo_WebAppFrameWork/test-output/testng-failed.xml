@@ -5,9 +5,10 @@
     <classes>
       <class name="com.saucedemo.tests.LoginPageTests">
         <methods>
-          <include name="TC_LoginPage_001"/>
           <include name="quit"/>
           <include name="setup"/>
+          <include name="Tc_LoginPage_011"/>
+          <include name="setupPage"/>
         </methods>
       </class> <!-- com.saucedemo.tests.LoginPageTests -->
     </classes>
