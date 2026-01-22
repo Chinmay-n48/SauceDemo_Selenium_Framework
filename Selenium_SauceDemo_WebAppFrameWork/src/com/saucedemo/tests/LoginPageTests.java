@@ -189,7 +189,7 @@ public class LoginPageTests extends BaseTest {
 	    driver.manage().window().setSize(new Dimension(768, 1024));
 	    Assert.assertTrue(driver.findElement(By.id("react-burger-menu-btn")).isDisplayed());
 	    
-	 // Mobile
+	    // Mobile
 	    driver.manage().window().setSize(new Dimension(375, 667));
 	    driver.findElement(By.id("react-burger-menu-btn")).click();		
 	}

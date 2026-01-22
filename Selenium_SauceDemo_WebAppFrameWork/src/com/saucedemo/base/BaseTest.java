@@ -33,7 +33,6 @@ public class BaseTest {
     }
     @AfterMethod
     public void quit() {
-        driver.quit();
-       
+        driver.quit();      
     }
 }
