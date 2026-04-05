@@ -69,6 +69,6 @@ public class LoginPage{
     	return driver.findElement(LoginBtn).getAttribute("value");
     }
     public String getPasswordFieldMasking() {
-    	return driver.findElement(PasswordField).getAttribute("Type");
+    	return driver.findElement(PasswordField).getAttribute("type");
     }
 }
