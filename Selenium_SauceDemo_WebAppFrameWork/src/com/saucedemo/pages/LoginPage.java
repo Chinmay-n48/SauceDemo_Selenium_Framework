@@ -3,9 +3,11 @@ package com.saucedemo.pages;
 import java.security.PublicKey;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.saucedemo.base.BaseTest;
+import com.saucedemo.utils.ActionUtils;
 
 public class LoginPage{
 	WebDriver driver;
@@ -17,6 +19,8 @@ public class LoginPage{
     public By LoginPageTitle=By.xpath("//div [@class='login_logo']");
     public By ErrorMessageCloseBtn=By.xpath("//button[@class='error-button']");
     
+   
+    
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -26,32 +30,34 @@ public class LoginPage{
         driver.findElement(PasswordField).sendKeys(pass);
         driver.findElement(LoginBtn).click();
     }
+    
     public boolean getLoginErrorMessagedisplayed() {
-    	return driver.findElement(LoginErrorMessage).isDisplayed();
+        return ActionUtils.isDisplayed(driver, driver.findElement(LoginErrorMessage));
     }
+    
     public String getLoginErrorMessage() {
-    	return driver.findElement(LoginErrorMessage).getText();
+    	return ActionUtils.getText(driver, driver.findElement(LoginErrorMessage));
     }
     public boolean getLoginPageTitledisplayed() {
-    	return driver.findElement(LoginPageTitle).isDisplayed();
+    	return ActionUtils.isDisplayed(driver, driver.findElement(LoginPageTitle));
     }
     public String getLoginPageTitleText() {
-    	return driver.findElement(LoginPageTitle).getText();
+    	return ActionUtils.getText(driver, driver.findElement(LoginPageTitle));
     }
     public boolean getUserNameFieldDisplayed() {
-    	return driver.findElement(UserNameField).isDisplayed();
+    	return ActionUtils.isDisplayed(driver, driver.findElement(UserNameField));
     }
     public boolean getUserNameFieldEnabled() {
-    	return driver.findElement(UserNameField).isEnabled();
+    	return ActionUtils.isEnabled(driver, driver.findElement(UserNameField));
     }
     public String getUserNameFieldPlaceholder() {
     	return driver.findElement(UserNameField).getAttribute("placeholder");
     }
     public boolean getPassWordFieldDisplayed() {
-    	return driver.findElement(PasswordField).isDisplayed();
+    	return ActionUtils.isDisplayed(driver, driver.findElement(PasswordField));
     }
     public boolean getUserPassWordFieldEnabled() {
-    	return driver.findElement(PasswordField).isEnabled();
+    	return ActionUtils.isEnabled(driver, driver.findElement(PasswordField));
     }
     public String getPassWordFieldPlaceholder() {
     	return driver.findElement(PasswordField).getAttribute("placeholder");

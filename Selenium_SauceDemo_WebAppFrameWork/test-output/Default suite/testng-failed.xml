@@ -6,9 +6,8 @@
       <class name="com.saucedemo.tests.LoginPageTests">
         <methods>
           <include name="quit"/>
+          <include name="TC_LoginPage_003"/>
           <include name="setup"/>
-          <include name="TC_Login_018"/>
-          <include name="TC_Login_019"/>
           <include name="setupPage"/>
         </methods>
       </class> <!-- com.saucedemo.tests.LoginPageTests -->

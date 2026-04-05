@@ -13,9 +13,11 @@ import org.testng.annotations.Test;
 
 import com.saucedemo.base.BaseTest;
 import com.saucedemo.pages.LoginPage;
+import com.saucedemo.utils.ActionUtils;
 
 public class LoginPageTests extends BaseTest {       
 	LoginPage login;
+	ActionUtils Action;
 
 	    @BeforeMethod
 	    public void setupPage() {
@@ -48,10 +50,10 @@ public class LoginPageTests extends BaseTest {
 		}
 	@Test
 	//Verify error for invalid password
-	public void TC_LoginPage_004()  {
+	public void TC_LoginPage_004(){
 		login.login("standard_user","secretsauce");
 		Assert.assertEquals(login.getLoginErrorMessagedisplayed(), true, "Error Message not displayed");
-	     Assert.assertEquals(login.getLoginErrorMessage(),"Epic sadface: Username and password do not match any user in this service", "Error message is not matched");
+	    Assert.assertEquals(login.getLoginErrorMessage(),"Epic sadface: Username and password do not match any user in this service", "Error message is not matched");
 	}
 	@Test
 	//Verify error for invalid credentials
@@ -136,7 +138,7 @@ public class LoginPageTests extends BaseTest {
 	public void TC_Login_014() {
 		login.login("standarduser", "secretsauce");
 		Assert.assertTrue(login.getLoginErrorMessagedisplayed(), "Error Message not displayed");
-		driver.findElement(login.ErrorMessageCloseBtn).click();
+		Action.click(driver,driver.findElement(login.ErrorMessageCloseBtn));		
 		
 	}
 	@Test
