@@ -15,6 +15,7 @@ public class WaitUtils {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 	
+	//Wait time for the element enabled.
 	public static void waitForEnabled(WebDriver driver,WebElement element ) {
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(element));
 	}
